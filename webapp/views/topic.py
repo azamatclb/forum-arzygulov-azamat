@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 
+from webapp.forms.comment import CommentForm
 from webapp.forms.topic import TopicForm
 from webapp.models import Topic
 
@@ -33,4 +33,5 @@ class TopicDetailView(DetailView, LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         topic = self.get_object()
         context['comments'] = topic.comments.all()
+        context['comment_form'] = CommentForm()
         return context

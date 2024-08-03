@@ -1,16 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, CreateView
+from django.views.generic import CreateView
 
 from webapp.forms.comment import CommentForm
 from webapp.models import Topic
 from webapp.models.comment import Comment
-
-
-class CommentListView(ListView):
-    # template_name = 'comment_list.html'
-    model = Comment
 
 
 class CommentAddView(LoginRequiredMixin, CreateView):
@@ -26,4 +21,4 @@ class CommentAddView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('topic_detail', kwargs={'pk': self.object.topic.pk})
+        return reverse('webapp:topic_detail', kwargs={'pk': self.object.topic.pk})

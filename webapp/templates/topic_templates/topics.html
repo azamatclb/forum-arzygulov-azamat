@@ -13,8 +13,10 @@
                         <div class="card-body d-flex flex-row align-items-center">
                             <div class="mr-3">
                                 <a href="{% url 'webapp:topic_detail' topic.pk %}" class="text-decoration-none">
-                                    <h5 class="card-title"><span class="ms-5 me-5">{{ topic.title }}</span> <span class="ms-5 me-5">{{ topic.date_created|date:'Y-m-d' }}</span> <span class="ms-5 me-5">{{ topic.author }}</span>
-                                       <span class="ms-5"> ответов: {{ topic.comments.count }}</span></h5>
+                                    <h5 class="card-title"><span class="ms-5 me-5">{{ topic.summary }}</span> <span
+                                            class="ms-5 me-5">{{ topic.date_created|date:'Y-m-d' }}</span> <span
+                                            class="ms-5 me-5">{{ topic.author }}</span>
+                                        <span class="ms-5"> ответов: {{ topic.comments.count }}</span></h5>
                                 </a>
                             </div>
                         </div>
