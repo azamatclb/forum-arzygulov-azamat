@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'account:login' %}" method='post'>
+        {% csrf_token %}
+        <div class="form text-center mt-5">
+            <div class="form-floating mb-3 text-center">
+                <input type="text" placeholder="Usarname" name="username">
+                {#            <label for="floatingInput">Username</label>#}
+            </div>
+            <div class="form-floating text-center">
+                <input type="password" placeholder="Password" name="password">
+                {#            <label for="floatingPassword">Password</label>#}
+            </div>
+            {% if next_param %}
+                <input type="hidden" name="next" value="{{ next_param }}">
+            {% endif %}
+            {% if has_error %}
+                <div class="alert alert-danger" role="alert">
+                    Неправильное имя пользователя или пароль.
+                </div>
+            {% endif %}
+            <button class="btn btn-primary mt-2" type="submit">Login</button>
+        </div>
+    </form>
+{% endblock %}
