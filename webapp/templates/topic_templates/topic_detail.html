@@ -6,13 +6,11 @@
 
 {% block content %}
     <div class="container">
-        
         <div class="card mb-4" style="width: 65rem;">
             <div class="card-body">
                 <h3 class="text-title">{{ topic.title }}</h3>
                 <h5 class="card-text">{{ topic.summary }}</h5>
                 <p class="card-text text-muted">Дата создания: {{ topic.date_created|date:'Y-m-d' }}</p>
-
             </div>
             <div class="card-footer border-0 bg-white">
                 <a href="{% url 'webapp:comment_add' topic.pk %}" class="btn btn-primary">Ответить</a>
@@ -26,7 +24,8 @@
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-start mb-2">
                             <div class="me-3">
-                                <img src="{{ comment.avatar }}" alt="pfp" style="border-radius: 50px; height: 50px; width: 50px"><br>
+                                <img src="{{ comment.author.avatar.url }}" alt="pfp"
+                                     style="border-radius: 50px; height: 50px; width: 50px"><br>
                                 <strong>{{ comment.author }}</strong>
                             </div>
                             <div class="flex-grow-1">
@@ -39,6 +38,50 @@
             {% empty %}
                 <p>Нет комментариев.</p>
             {% endfor %}
+
+            <nav>
+                <ul class="pagination">
+                    {% if comments.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ comments.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </span>
+                        </li>
+                    {% endif %}
+
+                    {% for num in comments.paginator.page_range %}
+                        {% if comments.number == num %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if comments.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ comments.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
     </div>
 {% endblock %}
