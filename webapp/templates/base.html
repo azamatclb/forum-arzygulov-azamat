@@ -49,8 +49,10 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <img src="{{ request.user.avatar }}" alt="">
-                        {{ request.user }}
+                        <a href="{% url 'account:profile_view' request.user.pk %}">
+                            <img src="{{ request.user.avatar }}" alt="">
+                            {{ request.user }}
+                        </a>
                     </li>
                 </ul>
 

@@ -8,7 +8,7 @@ class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=16, required=True, label='Имя пользователя')
     email = forms.EmailField(widget=forms.EmailInput, required=True)
     password = forms.CharField(label='Пароль', strip=False, required=True, widget=forms.PasswordInput)
-    password_confirm = forms.CharField(label='Потвердить пароль', strip=False, required=True,
+    password_confirm = forms.CharField(label='Подтвердить пароль', strip=False, required=True,
                                        widget=forms.PasswordInput)
     avatar = forms.ImageField(required=True, label='Аватарка')
 
@@ -25,10 +25,11 @@ class UserRegistrationForm(forms.ModelForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
-        if 'avatar' in self.files:
-            user.avatar = self.files['avatar']
         if commit:
             user.save()
+            if 'avatar' in self.files:
+                user.profile.avatar = self.files['avatar']
+                user.profile.save()
         return user
 
     def validate_username_length(self):

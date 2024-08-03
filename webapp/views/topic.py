@@ -1,7 +1,7 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.forms.comment import CommentForm
 from webapp.forms.topic import TopicForm
@@ -42,3 +42,29 @@ class TopicDetailView(DetailView, LoginRequiredMixin):
         context['comments'] = page_obj
         context['comment_form'] = CommentForm()
         return context
+
+
+class TopicUpdateView(LoginRequiredMixin, UpdateView, PermissionRequiredMixin):
+    template_name = 'topic_templates/topic_update.html'
+    form_class = TopicForm
+    model = Topic
+    permission_required = 'webapp.change_topic'
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().author or self.request.user.groups.filter(
+            name='moderator').exists()
+
+    def get_success_url(self):
+        return reverse('webapp:topic_detail', kwargs={"pk": self.object.pk})
+
+
+class TopicDeleteView(LoginRequiredMixin, DeleteView, PermissionRequiredMixin):
+    template_name = 'topic_templates/topic_delete.html'
+    model = Topic
+    permission_required = 'webapp.delete_topic'
+    success_url = reverse_lazy('webapp:topics')
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().author or self.request.user.groups.filter(
+            name='moderator')
+

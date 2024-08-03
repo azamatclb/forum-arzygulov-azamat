@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
-from django.views.generic import DetailView
 
 User = get_user_model()
 
@@ -27,8 +26,3 @@ class Profile(AbstractUser):
         help_text='Конкретные права доступа для этого пользователя.',
         verbose_name='Права доступа'
     )
-
-# class ProfileView(DetailView):
-#     model = User
-#     template_name = 'profile_view.html'
-#

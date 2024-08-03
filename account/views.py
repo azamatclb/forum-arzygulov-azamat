@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from account.forms import UserRegistrationForm
 from account.models import Profile
@@ -51,3 +51,9 @@ class RegisterView(CreateView):
         if not next_url:
             next_url = reverse('webapp:topics')
         return next_url
+
+
+class ProfileView(DetailView):
+    template_name = 'profile_view.html'
+    model = User
+    context_object_name = 'user_obj'

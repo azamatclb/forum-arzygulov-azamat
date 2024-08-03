@@ -118,9 +118,13 @@ USE_I18N = True
 USE_TZ = True
 
 
+LOGIN_URL = 'account:login'
+
+LOGIN_REDIRECT_URL = 'webapp:topics'
+LOGOUT_REDIRECT_URL = 'webapp:topics'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'uploads')
 
 # AUTH_USER_MODEL = 'account.Profile'
 

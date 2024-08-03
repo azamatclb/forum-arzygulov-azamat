@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>{{ user_obj.username }}'s Profile</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Username: {{ user_obj.username }}</h1>
+        <img src="{{ user_obj.avatar.url }}" alt="pfp" style="width: 100px; height: 100px;">
+
+    <p>Email: {{ user_obj.email }}</p>
+{% endblock %}
