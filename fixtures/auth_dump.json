@@ -1,0 +1,92 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$78tLKOg0EScUBSwGC1f41l$YCnzPh9PqzDcBXlnPxj3PBrTSJ+lYfRGKAkTMxzQiNQ=",
+    "last_login": "2024-08-03T12:10:48.859Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-08-03T06:48:48.404Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$wbKmRYjjsfwkbpDehw0CmP$07gLH6xpINtQCwZKGdzMFhsHkCH7wrecK7lxCL/aRwY=",
+    "last_login": "2024-08-03T09:33:00.550Z",
+    "is_superuser": true,
+    "username": "azamat",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-08-03T08:06:24.960Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$edgtBCQ5JwLYfUOBVmDs8F$qXM4rixw5aZkhUICraNZedJUGwEA1Hp4qr0PAl22mxk=",
+    "last_login": "2024-08-03T10:07:45.363Z",
+    "is_superuser": false,
+    "username": "azamatq2oeiqheq",
+    "first_name": "awfqbwfoqufbq",
+    "last_name": "",
+    "email": "awkjbqu@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-08-03T10:06:54.354Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$54HLTUciXXjhj8OHUvx9Mc$c2O7vjmvvHPTZJMryrNgl84yq+0ZigrknGatVJrSDIw=",
+    "last_login": "2024-08-03T12:01:26.797Z",
+    "is_superuser": false,
+    "username": "azamat1234",
+    "first_name": "",
+    "last_name": "",
+    "email": "1234@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-08-03T10:27:22.859Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$IDEFVc2m7tthztK6jOdM2Q$bh6F5jXLfpoJnrBTYPS/KXN9e9SkvbenZuoMnuvzHkk=",
+    "last_login": "2024-08-03T12:23:13.724Z",
+    "is_superuser": false,
+    "username": "азамат",
+    "first_name": "",
+    "last_name": "",
+    "email": "azamat232@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-08-03T12:23:12.449Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
